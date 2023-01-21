@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     featuredContent: {
         display: "flex",
         justifyContent: "space-around",
-        alignItems: "stretch",
+        alignItems: "center",
         margin: "20px",
         marginBottom: "0px"
     },
@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
         },
         padding: "25px",
         maxWidth: "600px",
+        minWidth: "520px"
     },
     owner: {
         display: "flex",
@@ -68,8 +69,6 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "20px",
     },
     biddings: {
-        display: "flex",
-        justifyContent: "space-between",
         marginTop: "20px",
         color: "#fff",
         fontFamily: "Rubik, sans-serif",
