@@ -19,20 +19,16 @@ const headersData = [
     href: "/",
   },
   {
-    label: "MarketPlace",
+    label: "Donate",
+    href: "/donate",
+  },
+  {
+    label: "Consume",
     href: "/marketplace",
   },
   {
-    label: "My Collections",
-    href: "/mycollections",
-  },
-  {
-    label: "Write",
-    href: "/write",
-  },
-  {
-    label: "Connect Wallet",
-    href: "/connectwallet",
+    label: "Analytics",
+    href: "/analysis",
   },
 ];
 
@@ -62,7 +58,7 @@ const Header = () => {
               <div className={logoName}>
                 <img src={logo} alt='logo' className={img} />
                 <Typography variant='h6' component='h1' className={headerTitle}>
-                  Patra
+                  FoodSave
                 </Typography>
               </div>
               <div className={search}>
@@ -70,7 +66,7 @@ const Header = () => {
                   <SearchIcon />
                 </div>
                 <InputBase
-                  placeholder='Search Content ...'
+                  placeholder='Search Offers ...'
                   classes={{
                     root: inputRoot,
                     input: inputInput,

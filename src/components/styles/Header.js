@@ -41,10 +41,10 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             backgroundColor: "rgba(255, 255, 255, 0.3)",
         },
-        "&:last-child": {
-            backgroundColor: "#c3a400",
-            color: "#000",
-        },
+        // "&:last-child": {
+        //     backgroundColor: "#c3a400",
+        //     color: "#000",
+        // },
     },
     search: {
         position: "relative",

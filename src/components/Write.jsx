@@ -35,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: "5px",
     color: "#fff",
   },
+  rightContent: {
+    width: "100%",
+  },
 }));
 
 const Write = () => {
