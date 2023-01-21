@@ -7,6 +7,7 @@ import HorizontalScrolling from "./elements/HorizontalScroll";
 import { content } from "./elements/dummyImages";
 import ListHead from "./elements/ListHead";
 import { useNavigate } from "react-router";
+import {storeData,getData} from "../integration"
 
 const auctionContent = content;
 
@@ -33,7 +34,7 @@ const Home = () => {
                   0xD43f4536...5e4 ) <br />
                   Author : Susan Briscoe <br />
                 </Typography>
-                <Button variant='contained' className={classes.exploreButton}>
+                <Button variant='contained' className={classes.exploreButton} onClick={getData}>
                   Place a Bid
                 </Button>
               </div>
@@ -55,7 +56,7 @@ const Home = () => {
               </ReadMore>
             </div>
           </div>
-          <Button variant='contained' className={classes.exploreButton}>
+          <Button variant='contained' className={classes.exploreButton} onClick={()=>storeData(4)}>
             Explore More
           </Button>
         </div>
