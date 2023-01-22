@@ -16,7 +16,7 @@ import { useStyles } from "./styles/Header"
 const headersData = [
   {
     label: "Home",
-    href: "/",
+    href: "/home",
   },
   {
     label: "Donate",
@@ -32,7 +32,7 @@ const headersData = [
   },
   {
     label: "Log In",
-    href: "/login",
+    href: "/",
   },
   {
     label: "Sign Up",

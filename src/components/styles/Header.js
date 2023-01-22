@@ -62,31 +62,24 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(1),
       width: "auto",
     },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  inputRoot: {
-    color: "inherit",
-    fontFamily: "Rubik, sans-serif",
-    fontSize: "1rem",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      width: "15ch",
-      "&:focus": {
-        width: "20ch",
+    headerButton: {
+      fontFamily: "Rubik, sans-serif",
+      fontWeight: 600,
+      fontSize: "0.9rem",
+      color: "#FFFFFF",
+      borderRadius: "5px",
+      size: "small",
+      marginLeft: "40px",
+      transition: "0.5s all ease-out",
+      "&:hover": {
+        backgroundColor: "rgba(255, 255, 255, 0.3)",
+      },
+      "&:nth-child(5), &:nth-child(6)": {
+        backgroundColor: "#FFD600",
+        color: "#000",
+      },
+      "&:nth-child(6)": {
+        marginLeft: "10px",
       },
     },
   },
