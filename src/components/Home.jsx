@@ -8,20 +8,44 @@ import { useNavigate } from "react-router";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import { useState } from "react";
 import QRCode from "react-qr-code";
+import {announceSale, fetchSaleData} from "../integration"
+import { useEffect } from "react";
 
-const auctionContent = content;
+const auctionContent = content
 
 const Home = () => {
-  const classes = useStyles();
-  const navigate = useNavigate();
+  const classes = useStyles()
+  const navigate = useNavigate()
   const marketRoute = () => {
-    navigate("/marketplace", { replace: true });
-  };
+    navigate("/marketplace", { replace: true })
+  }
   const singleRoute = () => {
-    navigate("/singlePage", { replace: true });
-  };
+    navigate("/singlePage", { replace: true })
+  }
+
+  // useEffect(() => {
+  //   const userData = {
+  //     id: 1,
+  //     name: "John Doe",
+  //     location: "kathmandu, Nepal",
+  //     number: 9841234567,
+  //   }
+  //   const txn = addUser(
+  //     userData.id,
+  //     userData.name,
+  //     userData.location,
+  //     userData.number
+  //   )
+  //   console.log(txn)
+  // }, [])
 
   const [isEdit, setIsEdit] = useState(true);
+  const [sale, setSale] = useState(true);
+
+  useEffect(()=>{
+    var sales = fetchSaleData()
+    console.log(sales)
+  })
 
   return (
     <div className={classes.mainContent}>
@@ -101,7 +125,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

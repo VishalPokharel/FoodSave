@@ -7,6 +7,7 @@ import {
 import React, { useState } from "react";
 import SimpleMap from "./elements/Maps";
 import { useStyles } from "./styles/Write";
+import {announceSale} from "../integration"
 
 const Donate = (props) => {
   const classes = useStyles();
@@ -166,6 +167,7 @@ const Donate = (props) => {
                 type='button'
                 value='Submit'
                 className={`${classes.submitButton} ${classes.chooseFile}`}
+                onClick = {()=>announceSale()}
               />
             </div>
           </div>
