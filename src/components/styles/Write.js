@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     textFields: {
         display: "flex",
         flexDirection: "column",
-        width: "40%",
+
         "& input": {
             color: "#fff"
         },
