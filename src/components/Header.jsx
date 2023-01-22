@@ -23,12 +23,20 @@ const headersData = [
     href: "/donate",
   },
   {
-    label: "Consume",
+    label: "Available Offers",
     href: "/marketplace",
   },
   {
     label: "Analytics",
     href: "/analysis",
+  },
+  {
+    label: "Log In",
+    href: "/login",
+  },
+  {
+    label: "Sign Up",
+    href: "/signup",
   },
 ];
 

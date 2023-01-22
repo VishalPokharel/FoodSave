@@ -41,10 +41,13 @@ const useStyles = makeStyles((theme) => ({
         "&:hover": {
             backgroundColor: "rgba(255, 255, 255, 0.3)",
         },
-        // "&:last-child": {
-        //     backgroundColor: "#c3a400",
-        //     color: "#000",
-        // },
+        "&:nth-child(5), &:nth-child(6)": {
+            backgroundColor: "#c3a400",
+            color: "#000",
+        },
+        "&:nth-child(6)": {
+            marginLeft: "10px"
+        },
     },
     search: {
         position: "relative",
@@ -54,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: alpha(theme.palette.common.white, 0.25),
         },
         marginLeft: 0,
-        width: "100%",
+        width: "80%",
         [theme.breakpoints.up("sm")]: {
             marginLeft: theme.spacing(1),
             width: "auto",
@@ -71,8 +74,8 @@ const useStyles = makeStyles((theme) => ({
     },
     inputRoot: {
         color: "inherit",
-        fontFamily: "Rancho, cursive",
-        fontSize: "1.25rem",
+        fontFamily: "Rubik, sans-serif",
+        fontSize: "1rem",
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 0),

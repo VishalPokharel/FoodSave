@@ -10,8 +10,9 @@ const useStyles = makeStyles((theme) => ({
   },
 
   button: {
+    marginTop: "15px",
     color: "#FFD600",
-    fontFamily: "Rancho, cursive",
+    fontFamily: "Rubik, sans-serif",
   },
 }));
 function ReadMore({ children }) {
@@ -24,7 +25,7 @@ function ReadMore({ children }) {
         size='small'
         onClick={() => setIsHidden(!isHidden)}
         className={classes.button}>
-        {isHidden ? "⬇ more" : "⬆ less"}
+        {isHidden ? "Read In Detail" : "⬆ less"}
       </Button>
     </>
   );
