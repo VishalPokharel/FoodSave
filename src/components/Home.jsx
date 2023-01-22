@@ -44,7 +44,7 @@ const Home = () => {
 
   useEffect(()=>{
     var sales = fetchSaleData()
-    console.log(sales)
+    setSale(sales[sales.length-1])
   })
 
   return (

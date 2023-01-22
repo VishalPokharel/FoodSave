@@ -4,42 +4,35 @@ const provider = new ethers.providers.JsonRpcProvider(
   "https://rpc-mumbai.maticvigil.com"
 )
 
-const contractAddress = "0x8Cff9475F2Da06c43D61afDa074A958264fd20A3"
+const contractAddress = "0x5382e5c568f349cbd9534686ffee3c148f8e7c16"
 
 const contractABI =[
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "_id",
-				"type": "uint256"
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
 			},
 			{
-				"components": [
-					{
-						"internalType": "string",
-						"name": "name",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "quantity",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
-					}
-				],
-				"internalType": "struct Agriculture.Food",
-				"name": "_items",
-				"type": "tuple"
+				"internalType": "uint256",
+				"name": "_quantity",
+				"type": "uint256"
 			},
 			{
 				"internalType": "string",
 				"name": "_type",
 				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_discount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_discountedprice",
+				"type": "uint256"
 			}
 		],
 		"name": "addSale",
@@ -49,16 +42,6 @@ const contractABI =[
 	},
 	{
 		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "_id",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "_name",
-				"type": "string"
-			},
 			{
 				"internalType": "string",
 				"name": "_type",
@@ -138,11 +121,6 @@ const contractABI =[
 						"internalType": "uint256",
 						"name": "quantity",
 						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "id",
-						"type": "uint256"
 					}
 				],
 				"internalType": "struct Agriculture.Food",
@@ -158,6 +136,16 @@ const contractABI =[
 				"internalType": "bool",
 				"name": "isActive",
 				"type": "bool"
+			},
+			{
+				"internalType": "uint256",
+				"name": "discount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "discountedprice",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -185,11 +173,6 @@ const contractABI =[
 								"internalType": "uint256",
 								"name": "quantity",
 								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "id",
-								"type": "uint256"
 							}
 						],
 						"internalType": "struct Agriculture.Food",
@@ -205,6 +188,16 @@ const contractABI =[
 						"internalType": "bool",
 						"name": "isActive",
 						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "discount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "discountedprice",
+						"type": "uint256"
 					}
 				],
 				"internalType": "struct Agriculture.Sale[]",
@@ -223,13 +216,13 @@ const wallet = new ethers.Wallet(privateKey, provider)
 const signer = wallet.connect(provider)
 const contract = new ethers.Contract(contractAddress, contractABI, signer)
 
-export const addUser = async (id, name, type, location, number) => {
-  const txn = await contract.addUser(id, name, type, location, number)
+export const addUser = async (type, location, number) => {
+  const txn = await contract.addUser(type, location, number)
   console.log(await txn.wait())
 }
 
-export const announceSale = async (items, userId, SaleType) => {
-  const set = await contract.addSale(items, userId, SaleType)
+export const announceSale = async (name,quantity, SaleType,discount,discountedprice) => {
+  const set = await contract.addSale(name,quantity, SaleType,discount,discountedprice)
   console.log(set)
 }
 
@@ -240,10 +233,11 @@ export const removeSale = async (saleId) => {
 
 export const fetchSaleData = async () => {
   const data = await contract.totalSales()
-  return [0,1,2,3]
-}
+console.log(data)}
 
 export const generateQR = async (saleId) => {
   const data = await contract.getQR(saleId)
-  console.log(data)
+  return data
 }
+
+fetchSaleData()

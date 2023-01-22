@@ -3,6 +3,7 @@ import {
   TextField,
   TextareaAutosize,
   InputAdornment,
+  Button
 } from "@material-ui/core";
 import React, { useState } from "react";
 import SimpleMap from "./elements/Maps";
@@ -14,10 +15,11 @@ const Donate = (props) => {
 
   const [inputValues, setInputValues] = useState({
     shop: "",
-    food: "",
+    food: "food",
     quantity: 0,
     discount: 0,
     discountedPrice: 0,
+    type:"",
     details: "",
   });
   const [image, setImage] = useState(null);
@@ -27,6 +29,11 @@ const Donate = (props) => {
     const value = event.target.value;
     setInputValues({ ...inputValues, [event.target.name]: value });
   };
+
+  const OnhandleSale = async (e) => {
+    console.log(inputValues.food+"AND"+inputValues.quantity+"AND"+ inputValues.type+"AND"+inputValues.discount+"AND"+inputValues.discountedPrice)
+    await announceSale(inputValues.food,inputValues.quantity, inputValues.type,inputValues.discount,inputValues.discountedPrice)
+  }
 
   return (
     <div className={classes.writePageContent}>
@@ -46,7 +53,7 @@ const Donate = (props) => {
                 id='bookTitle'
                 label="Vendor's Name"
                 variant='outlined'
-                name='title'
+                name='shop'
                 value={inputValues.shop}
                 onChange={handleOnChange}
                 className={classes.textField}
@@ -56,7 +63,7 @@ const Donate = (props) => {
                   id='author'
                   label='Food to Donate'
                   variant='outlined'
-                  name='foodItem'
+                  name='food'
                   value={inputValues.food}
                   onChange={handleOnChange}
                   className={classes.textField}
@@ -109,6 +116,15 @@ const Donate = (props) => {
                       <InputAdornment position='start'>Rs.</InputAdornment>
                     ),
                   }}
+                />
+                <TextField
+                  id='type'
+                  label='Type of Food'
+                  variant='outlined'
+                  type='text'
+                  name='type'
+                  onChange={handleOnChange}
+                  className={classes.textField}
                 />
               </div>
               <Typography
@@ -163,12 +179,10 @@ const Donate = (props) => {
               <img src={preview} alt='' className={classes.uploadedImage} />
               {/* <p>{file}</p> */}
 
-              <input
-                type='button'
-                value='Submit'
+              <Button
                 className={`${classes.submitButton} ${classes.chooseFile}`}
-                onClick = {()=>announceSale()}
-              />
+                onClick = {(e)=>OnhandleSale(e)}
+              >Submit</Button>
             </div>
           </div>
         </form>
