@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 600,
         fontSize: "0.9rem",
         color: "#FFFFFF",
-        borderRadius: "10px",
+        borderRadius: "5px",
         size: "small",
         marginLeft: "40px",
         transition: "0.5s all ease-out",
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: "rgba(255, 255, 255, 0.3)",
         },
         "&:nth-child(5), &:nth-child(6)": {
-            backgroundColor: "#c3a400",
+            backgroundColor: "#FFD600",
             color: "#000",
         },
         "&:nth-child(6)": {

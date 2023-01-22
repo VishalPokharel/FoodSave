@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Write = () => {
+const Analytics = () => {
   const {
     wrapperClass,
     editorClass,
@@ -67,4 +67,4 @@ const Write = () => {
   );
 };
 
-export default Write;
+export default Analytics;
