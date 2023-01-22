@@ -39,11 +39,6 @@ npm start
 > Deployment Network: Polygon Mumbai Testnet
 
 
-## Demo
-Demo Video: [FoodSave_Demo_Video](https://youtu.be/9VkuGBpeaOs)
-
-
-Live Demo: [FoodSave_Live_Demo](https://vertexhacks-3gh3.vercel.app/)
 
 
 
