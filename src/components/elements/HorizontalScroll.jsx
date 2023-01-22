@@ -4,6 +4,7 @@ import { Arrow } from "./Arrow";
 import useStyles from "../styles/Scrollbar";
 import ArrowBackIosRoundedIcon from "@material-ui/icons/ArrowBackIosRounded";
 import ArrowForwardIosRoundedIcon from "@material-ui/icons/ArrowForwardIosRounded";
+import SubTitle from "./SubTitle";
 
 // const getItems = content;
 
@@ -49,13 +50,31 @@ function HorizontalScrolling({ getItems }) {
     );
   }
 
-  function Card({ onClick, selected, title, itemId, img }) {
+  function Card({
+    onClick,
+    discount,
+    title,
+    items,
+    img,
+    vendor,
+    location,
+    endingDate,
+    url,
+  }) {
     const visibility = React.useContext(VisibilityContext);
 
     return (
       <div onClick={() => onClick(visibility)}>
         <div className={classes.card}>
-          <img src={img} alt={title} />
+          <img src={img} alt={vendor} height='10px' width='300px' />
+          <SubTitle
+            src={img}
+            vendor={vendor}
+            location={location}
+            endingDate={endingDate}
+            discount={discount}
+            items={items}
+          />
         </div>
       </div>
     );
@@ -66,16 +85,22 @@ function HorizontalScrolling({ getItems }) {
       LeftArrow={LeftArrow}
       RightArrow={RightArrow}
       className={classes.scrollMenu}>
-      {items.map(({ id, title, url }) => (
-        <Card
-          itemId={id} // NOTE: itemId is required for track items
-          title={title}
-          key={id}
-          img={url}
-          onClick={handleClick(id)}
-          selected={isItemSelected(id)}
-        />
-      ))}
+      {items.map(
+        ({ id, vendor, location, endingDate, url, discount, items }) => (
+          <Card
+            itemId={id} // NOTE: itemId is required for track items
+            vendor={vendor}
+            location={location}
+            endingDate={endingDate}
+            key={id}
+            img={url}
+            discount={discount}
+            items={items}
+            onClick={handleClick(id)}
+            selected={isItemSelected(id)}
+          />
+        )
+      )}
     </ScrollMenu>
   );
 }

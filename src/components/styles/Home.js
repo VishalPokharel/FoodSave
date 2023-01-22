@@ -7,17 +7,21 @@ const useStyles = makeStyles((theme) => ({
     featuredContent: {
         display: "flex",
         justifyContent: "space-around",
-        alignItems: "stretch",
+        alignItems: "center",
         margin: "20px",
         marginBottom: "0px"
+    },
+    moreButton: {
+        color: "#FFD600",
+        fontFamily: "Rubik, sans-serif",
     },
     featured: {
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
         "& p": {
-            fontFamily: "Rancho, cursive",
-            fontSize: "4rem",
+            fontFamily: "Rubik, sans-serif",
+            fontSize: "3.2rem",
             color: "#fff",
             textAlign: "left",
         },
@@ -35,13 +39,14 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "10px",
         marginTop: "20px",
         "& p": {
-            fontSize: "1.3rem",
+            fontSize: "1.1rem",
         },
         "& hr": {
             margin: "10px 0px",
         },
         padding: "25px",
-        maxWidth: "600px",
+        maxWidth: "650px",
+        minWidth: "580px"
     },
     owner: {
         display: "flex",
@@ -50,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     },
     description: {
         "& p": {
-            fontSize: "1.15rem",
+            fontSize: "0.9rem",
         },
     },
     exploreButton: {
@@ -60,16 +65,14 @@ const useStyles = makeStyles((theme) => ({
             backgroundColor: "rgba(255, 214, 0,0.7)",
         },
         borderRadius: "30px",
-        fontFamily: "Rancho, cursive",
-        fontSize: "1.5rem",
+        fontFamily: "Rubik, sans-serif",
+        fontSize: "1.1rem",
         textTransform: "capitalize",
         fontWeight: 500,
         padding: "2px 30px",
         marginTop: "20px",
     },
     biddings: {
-        display: "flex",
-        justifyContent: "space-between",
         marginTop: "20px",
         color: "#fff",
         fontFamily: "Rubik, sans-serif",
@@ -83,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
     itemsList: {
         "& p": {
             fontFamily: "Rancho, cursive",
-            fontSize: "4rem",
+            fontSize: "3rem",
             color: "#fff",
             textAlign: "left",
         },

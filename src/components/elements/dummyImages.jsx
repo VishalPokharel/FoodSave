@@ -7,53 +7,96 @@ function importAll(r) {
 }
 
 const assets = importAll(
-  require.context("../../assets", false, /\.(png|jpe?g|svg)$/)
+  require.context("../../assets/", false, /\.(png|jpe?g|svg)$/)
+);
+
+const resAssets = importAll(
+  require.context("../../assets/res", false, /\.(png|jpe?g|svg)$/)
 );
 
 export const content = [
   {
     id: "1",
     url: `${assets["dummy1.jpg"]}`,
-    title: "Breakfast",
+    vendor: "Aafanta Mart",
+    location: "Kadaghari",
+    endingDate: "2022/01/23",
+    discount: 80,
+    items: "Dairy Items",
   },
   {
     id: "2",
     url: `${assets["dummy2.jpg"]}`,
-    title: "Burgers",
+    vendor: "Kasturi Mart",
+    location: "Pepsicola",
+    endingDate: "2022/01/24",
+    discount: 70,
+    items: "Chips and Crackers",
   },
   {
     id: "3",
-    url: `${assets["dummy3.jpg"]}`,
-    title: "Camera",
+    url: `${assets["dummy3.jpeg"]}`,
+    vendor: "Sherpa Store",
+    location: "Koteshwor",
+    endingDate: "2022/01/25",
+    discount: 75,
+    items: "Confectionaries",
   },
   {
     id: "4",
-    url: `${assets["dummy4.jpeg"]}`,
-    title: "Camera1",
+    url: `${assets["dummy4.jpg"]}`,
+    vendor: "Saleways",
+    location: "Jawalakhel",
+    endingDate: "2022/01/26",
+    discount: 80,
+    items: "Fresh Produce",
   },
   {
     id: "5",
-    url: `${assets["dummy5.jpeg"]}`,
-    title: "Camera2",
+    url: `${assets["dummy5.jpg"]}`,
+    vendor: "Shyam Holsel",
+    location: "Baneshwor",
+    endingDate: "2022/01/27",
+    discount: 70,
+    items: "Masala Items",
+  },
+];
+
+export const res_content = [
+  {
+    id: "1",
+    url: `${resAssets["res1.jpeg"]}`,
+    vendor: "Namaste Khajaghar",
+    location: "Pokhara",
+    endingDate: "2022/01/23 8 PM to 10 PM",
+    discount: 100,
+    items: "Leftover Items",
   },
   {
-    id: "6",
-    url: `${assets["dummy6.jpeg"]}`,
-    title: "Camera3",
+    id: "2",
+    url: `${resAssets["res2.jpeg"]}`,
+    vendor: "Thule dai ko Momo",
+    location: "Bakhundole",
+    endingDate: "2022/01/24 after 9 PM",
+    discount: 100,
+    items: "Leftover Items",
   },
   {
-    id: "7",
-    url: `${assets["dummy4.jpeg"]}`,
-    title: "Camera4",
+    id: "3",
+    url: `${resAssets["res3.jpg"]}`,
+    vendor: "Small Star Restaurant",
+    location: "Koteshwor after 9 PM",
+    endingDate: "2022/01/25",
+    discount: 100,
+    items: "Leftover Items",
   },
   {
-    id: "8",
-    url: `${assets["dummy5.jpeg"]}`,
-    title: "Camera5",
-  },
-  {
-    id: "9",
-    url: `${assets["dummy6.jpeg"]}`,
-    title: "Camera6",
+    id: "4",
+    url: `${resAssets["res4.jpeg"]}`,
+    vendor: "Saleways",
+    location: "Jawalakhel",
+    endingDate: "2022/01/26 from 8 PM to 9 PM",
+    discount: 100,
+    items: "Leftover Items",
   },
 ];

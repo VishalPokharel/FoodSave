@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme) => ({
     card: {
         margin: "20px 20px",
         "& img": {
-            height: "450px"
+            height: "300px"
         }
     },
     arrow: {
@@ -14,8 +14,10 @@ const useStyles = makeStyles((theme) => ({
     scrollMenu: {
         margin: "10px 50px 50px 50px",
     },
-    scrollBar: {
-
+    biddings: {
+        '& div': {
+            margin: "10px"
+        }
     }
 
 }));

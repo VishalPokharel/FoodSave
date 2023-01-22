@@ -1,14 +1,15 @@
-import { Button, Divider, Typography } from "@material-ui/core"
-import React from "react"
-import dummy from "../assets/dummy.jpg"
-import ReadMore from "./elements/ReadMore"
-import { useStyles } from "./styles/Home"
-import HorizontalScrolling from "./elements/HorizontalScroll"
-import { content } from "./elements/dummyImages"
-import ListHead from "./elements/ListHead"
-import { useNavigate } from "react-router"
-import { addUser } from "../integration"
-import { useEffect } from "react"
+import { Button, Divider, Typography } from "@material-ui/core";
+import React from "react";
+import dummy from "../assets/dummy.jpg";
+import ReadMore from "./elements/ReadMore";
+import { useStyles } from "./styles/Home";
+import { content } from "./elements/dummyImages";
+import { useNavigate } from "react-router";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import { useState } from "react";
+import QRCode from "react-qr-code";
+import {announceSale, fetchSaleData} from "../integration"
+import { useEffect } from "react";
 
 const auctionContent = content
 
@@ -22,118 +23,107 @@ const Home = () => {
     navigate("/singlePage", { replace: true })
   }
 
-  useEffect(() => {
-    const userData = {
-      id: 1,
-      name: "John Doe",
-      location: "kathmandu, Nepal",
-      number: 9841234567,
-    }
-    const txn = addUser(
-      userData.id,
-      userData.name,
-      userData.location,
-      userData.number
-    )
-    console.log(txn)
-  }, [])
+  // useEffect(() => {
+  //   const userData = {
+  //     id: 1,
+  //     name: "John Doe",
+  //     location: "kathmandu, Nepal",
+  //     number: 9841234567,
+  //   }
+  //   const txn = addUser(
+  //     userData.id,
+  //     userData.name,
+  //     userData.location,
+  //     userData.number
+  //   )
+  //   console.log(txn)
+  // }, [])
+
+  const [isEdit, setIsEdit] = useState(true);
+  const [sale, setSale] = useState(true);
+
+  useEffect(()=>{
+    var sales = fetchSaleData()
+    console.log(sales)
+  })
 
   return (
     <div className={classes.mainContent}>
       <div className={classes.featuredContent}>
         <div className={classes.featured}>
-          <Typography>Featured Contents</Typography>
+          <Button
+            variant='contained'
+            className={`${classes.listButton} ${classes.exploreButton}`}>
+            Limited Offer <ArrowDownwardIcon />{" "}
+          </Button>
           <div className={classes.NFTFeatures}>
             <div>
               <div className={classes.owner}>
                 <Typography>
-                  Title : The Crow&apos;s Vow <br /> Owner : Susan Briscoe (
-                  0xD43f4536...5e4 ) <br />
-                  Author : Susan Briscoe <br />
+                  Vendor : Kasturi Mart <br /> Location: Birendra Chowk,
+                  Kadaghari <br />
+                  Ending Date : 2023/01/23 <br />
                 </Typography>
-                <Button
-                  variant="contained"
-                  className={classes.exploreButton}
-                  // onClick={getData}
-                >
-                  Place a Bid
-                </Button>
+                {isEdit ? (
+                  <Button
+                    variant='contained'
+                    className={classes.exploreButton}
+                    onClick={() => setIsEdit(false)}>
+                    Generate QR code
+                  </Button>
+                ) : (
+                  <div
+                    style={{
+                      height: "auto",
+                      margin: "0 20px",
+                      padding: "5px",
+                      maxWidth: 84,
+                    }}>
+                    <QRCode
+                      size={256}
+                      style={{
+                        height: "auto",
+                        maxWidth: "100%",
+                        width: "100%",
+                      }}
+                      viewBox={`0 0 256 256`}
+                      value='qr'
+                    />
+                  </div>
+                )}
               </div>
               <Divider />
               <ReadMore>
                 <div className={classes.description}>
                   <Typography>
-                    Following the story of a marriage come undone, this moving
-                    book-length sequence is broken down into four seasons,
-                    distilling the details of the failed relationship through
-                    physical processes of nature, such as the buzzing life of
-                    wildflowers and birds that the speaker?a wife and
-                    mother?studies daily for clues on happiness. Intricately
-                    constructed and brimming with resourceful linguistic play,
-                    these poems are elemental odes on the end of love and its
-                    eventual renewal.
+                    Items available at a discounted rate:
+                    <ul>
+                      <li>Rice</li>
+                      <li>Pizza</li>
+                      <li>Vegetables</li>
+                      <li>Apples</li>
+                      <li>Milk</li>
+                    </ul>
                   </Typography>
                 </div>
               </ReadMore>
             </div>
           </div>
           <Button
-            variant="contained"
+            variant='contained'
             className={classes.exploreButton}
-            // onClick={() => storeData(4)}
-          >
+            onClick={() => navigate("/marketplace")}>
             Explore More
           </Button>
         </div>
         <div className={classes.currentBid}>
-          <img src={dummy} alt="NFTImage" className={classes.NFTImage} />
+          <img src={dummy} alt='Mart Image' className={classes.NFTImage} />
           <div className={classes.biddings}>
-            <div>
-              Current Bid
-              <div className={classes.bidNumStyle}>4 ETH </div>
-              ($10000)
-            </div>
-            <div>
-              Remaining Time{" "}
-              <div className={classes.bidNumStyle}>10 : 22 : 29</div>
-            </div>
+            Remaining Time{" "}
+            <div className={classes.bidNumStyle}>10 : 22 : 29</div>
           </div>
         </div>
       </div>
-      <div className={classes.itemsList}>
-        <div className={classes.auctions}>
-          <ListHead
-            title={"On Auctions"}
-            leftButton={"On Sale"}
-            hasRightButton={false}
-          />
-          <HorizontalScrolling getItems={auctionContent} />
-        </div>
-        <div className={classes.notableContents}>
-          <ListHead
-            title={"Notable Contents"}
-            leftButton={"Trending"}
-            hasRightButton={true}
-          />
-          <HorizontalScrolling getItems={auctionContent} />
-        </div>
-        <div className={classes.notableCreators}>
-          <ListHead
-            title={"Notable Writers"}
-            leftButton={"Popular"}
-            hasRightButton={true}
-          />
-          <HorizontalScrolling getItems={auctionContent} />
-        </div>
-      </div>
-      <Button
-        variant="contained"
-        className={classes.exploreButton}
-        style={{ margin: "50px 0px" }}
-        onClick={marketRoute}
-      >
-        Explore Marketplace
-      </Button>
     </div>
   )
 }
