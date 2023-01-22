@@ -40,10 +40,10 @@ npm start
 
 
 ## Demo
-Demo Video: [FoodSave](http://medossier.netlify.app)
+Demo Video: [FoodSave_Demo_Video](http://medossier.netlify.app)
 
 
-Live Demo: [FoodSave](http://medossier.netlify.app)
+Live Demo: [FoodSave_Live_Demo](http://medossier.netlify.app)
 
 
 
