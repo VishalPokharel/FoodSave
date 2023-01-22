@@ -3,15 +3,15 @@ import {
   TextField,
   TextareaAutosize,
   InputAdornment,
-  Button
-} from "@material-ui/core";
-import React, { useState } from "react";
-import SimpleMap from "./elements/Maps";
-import { useStyles } from "./styles/Write";
-import {announceSale} from "../integration"
+  Button,
+} from "@material-ui/core"
+import React, { useState } from "react"
+import SimpleMap from "./elements/Maps"
+import { useStyles } from "./styles/Write"
+import { announceSale } from "../integration"
 
 const Donate = (props) => {
-  const classes = useStyles();
+  const classes = useStyles()
 
   const [inputValues, setInputValues] = useState({
     shop: "",
@@ -19,20 +19,36 @@ const Donate = (props) => {
     quantity: 0,
     discount: 0,
     discountedPrice: 0,
-    type:"",
+    type: "",
     details: "",
-  });
-  const [image, setImage] = useState(null);
-  const [preview, setPreview] = useState(null);
+  })
+  const [image, setImage] = useState(null)
+  const [preview, setPreview] = useState(null)
 
   const handleOnChange = (event) => {
-    const value = event.target.value;
-    setInputValues({ ...inputValues, [event.target.name]: value });
-  };
+    const value = event.target.value
+    setInputValues({ ...inputValues, [event.target.name]: value })
+  }
 
   const OnhandleSale = async (e) => {
-    console.log(inputValues.food+"AND"+inputValues.quantity+"AND"+ inputValues.type+"AND"+inputValues.discount+"AND"+inputValues.discountedPrice)
-    await announceSale(inputValues.food,inputValues.quantity, inputValues.type,inputValues.discount,inputValues.discountedPrice)
+    console.log(
+      inputValues.food +
+        "AND" +
+        inputValues.quantity +
+        "AND" +
+        inputValues.type +
+        "AND" +
+        inputValues.discount +
+        "AND" +
+        inputValues.discountedPrice
+    )
+    await announceSale(
+      inputValues.food,
+      inputValues.quantity,
+      inputValues.type,
+      inputValues.discount,
+      inputValues.discountedPrice
+    )
   }
 
   return (
@@ -43,27 +59,28 @@ const Donate = (props) => {
       </div> */}
       <div className={classes.uploadContent}>
         <form
-          action=''
+          action=""
           noValidate
-          autoComplete='off'
-          className={classes.writerForm}>
+          autoComplete="off"
+          className={classes.writerForm}
+        >
           <div className={classes.formContent}>
             <div className={classes.textFields}>
               <TextField
-                id='bookTitle'
+                id="bookTitle"
                 label="Vendor's Name"
-                variant='outlined'
-                name='shop'
+                variant="outlined"
+                name="shop"
                 value={inputValues.shop}
                 onChange={handleOnChange}
                 className={classes.textField}
               />
               <div style={{ display: "flex" }}>
                 <TextField
-                  id='author'
-                  label='Food to Donate'
-                  variant='outlined'
-                  name='food'
+                  id="author"
+                  label="Food to Donate"
+                  variant="outlined"
+                  name="food"
                   value={inputValues.food}
                   onChange={handleOnChange}
                   className={classes.textField}
@@ -72,17 +89,17 @@ const Donate = (props) => {
                   }}
                 />
                 <TextField
-                  id='number'
-                  label='Quantity'
-                  variant='outlined'
-                  type='number'
-                  name='foodQuantity'
+                  id="number"
+                  label="Quantity"
+                  variant="outlined"
+                  type="number"
+                  name="quantity"
                   className={classes.textField}
                   onChange={handleOnChange}
                 />
                 <input
-                  type='button'
-                  value='+'
+                  type="button"
+                  value="+"
                   className={` ${classes.chooseFile}`}
                   style={{
                     margin: "10px 5px",
@@ -94,35 +111,35 @@ const Donate = (props) => {
               </div>
               <div style={{ display: "flex" }}>
                 <TextField
-                  id='discount'
-                  label='Discount'
-                  variant='outlined'
-                  name='discount'
-                  type='number'
+                  id="discount"
+                  label="Discount"
+                  variant="outlined"
+                  name="discount"
+                  type="number"
                   value={inputValues.discount}
                   onChange={handleOnChange}
                   className={classes.textField}
                 />
                 <TextField
-                  id='discountedPrice'
-                  label='Discounted Price'
-                  variant='outlined'
-                  type='number'
-                  name='discountedPrice'
+                  id="discountedPrice"
+                  label="Discounted Price"
+                  variant="outlined"
+                  type="number"
+                  name="discountedPrice"
                   onChange={handleOnChange}
                   className={classes.textField}
                   InputProps={{
                     startAdornment: (
-                      <InputAdornment position='start'>Rs.</InputAdornment>
+                      <InputAdornment position="start">Rs.</InputAdornment>
                     ),
                   }}
                 />
                 <TextField
-                  id='type'
-                  label='Type of Food'
-                  variant='outlined'
-                  type='text'
-                  name='type'
+                  id="type"
+                  label="Type of Food"
+                  variant="outlined"
+                  type="text"
+                  name="type"
                   onChange={handleOnChange}
                   className={classes.textField}
                 />
@@ -131,19 +148,27 @@ const Donate = (props) => {
                 style={{
                   margin: "10px 0px 0px 10px",
                   fontSize: "1rem",
-                }}>
+                }}
+              >
                 Details
               </Typography>
               <TextareaAutosize
-                id='description'
-                aria-label='Description'
+                id="description"
+                aria-label="Description"
                 minRows={10}
-                placeholder='A short description about your product'
-                name='description'
+                placeholder="A short description about your product"
+                name="description"
                 style={{ overflow: "auto" }}
                 value={inputValues.description}
                 onChange={handleOnChange}
               />
+
+              <Button
+                className={`${classes.submitButton} ${classes.chooseFile}`}
+                onClick={(e) => OnhandleSale(e)}
+              >
+                Submit
+              </Button>
             </div>
             <div className={classes.rightContent}>
               <SimpleMap />
@@ -151,44 +176,40 @@ const Donate = (props) => {
                 style={{
                   margin: "40px 150px 0px 0px",
                   fontSize: "2rem",
-                }}>
+                }}
+              >
                 Upload Shop Image
               </Typography>
               <div className={classes.chooseFile}>
                 Choose Image
                 <input
-                  type='file'
-                  accept='image/*'
+                  type="file"
+                  accept="image/*"
                   onChange={(event) => {
-                    const file = event.target.files[0];
+                    const file = event.target.files[0]
                     if (file && file.type.substring(0, 5) === "image") {
-                      const reader = new FileReader();
+                      const reader = new FileReader()
                       reader.onloadend = () => {
-                        setPreview(reader.result);
-                      };
-                      reader.readAsDataURL(file);
-                      setImage(file);
+                        setPreview(reader.result)
+                      }
+                      reader.readAsDataURL(file)
+                      setImage(file)
                     } else {
-                      setImage(null);
-                      setPreview(null);
+                      setImage(null)
+                      setPreview(null)
                     }
                   }}
                   className={classes.inputFile}
                 />
               </div>
-              <img src={preview} alt='' className={classes.uploadedImage} />
+              <img src={preview} alt="" className={classes.uploadedImage} />
               {/* <p>{file}</p> */}
-
-              <Button
-                className={`${classes.submitButton} ${classes.chooseFile}`}
-                onClick = {(e)=>OnhandleSale(e)}
-              >Submit</Button>
             </div>
           </div>
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Donate;
+export default Donate

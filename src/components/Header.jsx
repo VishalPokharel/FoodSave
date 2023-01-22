@@ -1,6 +1,6 @@
-import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import logo from "../assets/logo.png";
+import React from "react"
+import { Link as RouterLink } from "react-router-dom"
+import logo from "../assets/logo.png"
 import {
   AppBar,
   Toolbar,
@@ -8,15 +8,15 @@ import {
   Button,
   Box,
   InputBase,
-} from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
+} from "@material-ui/core"
+import SearchIcon from "@material-ui/icons/Search"
 
-import { useStyles } from "./styles/Header";
+import { useStyles } from "./styles/Header"
 
 const headersData = [
   {
     label: "Home",
-    href: "/",
+    href: "/home",
   },
   {
     label: "Donate",
@@ -28,17 +28,17 @@ const headersData = [
   },
   {
     label: "Analytics",
-    href: "/analysis",
+    href: "/analytics",
   },
   {
     label: "Log In",
-    href: "/login",
+    href: "/",
   },
   {
     label: "Sign Up",
     href: "/signup",
   },
-];
+]
 
 const Header = () => {
   const {
@@ -52,24 +52,25 @@ const Header = () => {
     searchIcon,
     inputInput,
     inputRoot,
-  } = useStyles();
+  } = useStyles()
   const displayHeader = () => {
     return (
       <header>
-        <AppBar className={header} position='static'>
+        <AppBar className={header} position="static">
           <Box
             borderBottom={1}
             borderColor={"#c3a400"}
             marginRight={4}
-            marginLeft={4}>
+            marginLeft={4}
+          >
             <Toolbar className={toolbar}>
               <div className={logoName}>
-                <img src={logo} alt='logo' className={img} />
-                <Typography variant='h6' component='h1' className={headerTitle}>
+                <img src={logo} alt="logo" className={img} />
+                <Typography variant="h6" component="h1" className={headerTitle}>
                   FoodSave
                 </Typography>
               </div>
-              <div className={search}>
+              {/* <div className={search}>
                 <div className={searchIcon}>
                   <SearchIcon />
                 </div>
@@ -81,14 +82,14 @@ const Header = () => {
                   }}
                   inputProps={{ "aria-label": "search" }}
                 />
-              </div>
+              </div> */}
               <div>{getMenuButtons()}</div>
             </Toolbar>
           </Box>
         </AppBar>
       </header>
-    );
-  };
+    )
+  }
 
   const getMenuButtons = () => {
     return headersData.map(({ label, href }) => {
@@ -100,14 +101,15 @@ const Header = () => {
             to: href,
             component: RouterLink,
             className: headerButton,
-          }}>
+          }}
+        >
           {label}
         </Button>
-      );
-    });
-  };
+      )
+    })
+  }
 
-  return <div>{displayHeader()}</div>;
-};
+  return <div>{displayHeader()}</div>
+}
 
-export default Header;
+export default Header
