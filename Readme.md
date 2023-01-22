@@ -40,5 +40,10 @@ npm start
 
 
 
+## Demo
+Demo Video: [FoodSave_Demo_Video](https://www.youtube.com/watch?v=_Oxoa3DcnKk)
+
+
+Live Demo: [FoodSave_Live_Demo](https://vertexhacks-3gh3.vercel.app/)
 
 
