@@ -1,25 +1,42 @@
-import { Button, Divider, Typography } from "@material-ui/core";
-import React from "react";
-import dummy from "../assets/dummy.jpg";
-import ReadMore from "./elements/ReadMore";
-import { useStyles } from "./styles/Home";
-import HorizontalScrolling from "./elements/HorizontalScroll";
-import { content } from "./elements/dummyImages";
-import ListHead from "./elements/ListHead";
-import { useNavigate } from "react-router";
-import {storeData,getData} from "../integration"
+import { Button, Divider, Typography } from "@material-ui/core"
+import React from "react"
+import dummy from "../assets/dummy.jpg"
+import ReadMore from "./elements/ReadMore"
+import { useStyles } from "./styles/Home"
+import HorizontalScrolling from "./elements/HorizontalScroll"
+import { content } from "./elements/dummyImages"
+import ListHead from "./elements/ListHead"
+import { useNavigate } from "react-router"
+import { addUser } from "../integration"
+import { useEffect } from "react"
 
-const auctionContent = content;
+const auctionContent = content
 
 const Home = () => {
-  const classes = useStyles();
-  const navigate = useNavigate();
+  const classes = useStyles()
+  const navigate = useNavigate()
   const marketRoute = () => {
-    navigate("/marketplace", { replace: true });
-  };
+    navigate("/marketplace", { replace: true })
+  }
   const singleRoute = () => {
-    navigate("/singlePage", { replace: true });
-  };
+    navigate("/singlePage", { replace: true })
+  }
+
+  useEffect(() => {
+    const userData = {
+      id: 1,
+      name: "John Doe",
+      location: "kathmandu, Nepal",
+      number: 9841234567,
+    }
+    const txn = addUser(
+      userData.id,
+      userData.name,
+      userData.location,
+      userData.number
+    )
+    console.log(txn)
+  }, [])
 
   return (
     <div className={classes.mainContent}>
@@ -34,7 +51,11 @@ const Home = () => {
                   0xD43f4536...5e4 ) <br />
                   Author : Susan Briscoe <br />
                 </Typography>
-                <Button variant='contained' className={classes.exploreButton} onClick={getData}>
+                <Button
+                  variant="contained"
+                  className={classes.exploreButton}
+                  // onClick={getData}
+                >
                   Place a Bid
                 </Button>
               </div>
@@ -56,12 +77,16 @@ const Home = () => {
               </ReadMore>
             </div>
           </div>
-          <Button variant='contained' className={classes.exploreButton} onClick={()=>storeData(4)}>
+          <Button
+            variant="contained"
+            className={classes.exploreButton}
+            // onClick={() => storeData(4)}
+          >
             Explore More
           </Button>
         </div>
         <div className={classes.currentBid}>
-          <img src={dummy} alt='NFTImage' className={classes.NFTImage} />
+          <img src={dummy} alt="NFTImage" className={classes.NFTImage} />
           <div className={classes.biddings}>
             <div>
               Current Bid
@@ -102,14 +127,15 @@ const Home = () => {
         </div>
       </div>
       <Button
-        variant='contained'
+        variant="contained"
         className={classes.exploreButton}
         style={{ margin: "50px 0px" }}
-        onClick={marketRoute}>
+        onClick={marketRoute}
+      >
         Explore Marketplace
       </Button>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
