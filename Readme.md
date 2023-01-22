@@ -43,7 +43,7 @@ npm start
 Demo Video: [FoodSave_Demo_Video](http://medossier.netlify.app)
 
 
-Live Demo: [FoodSave_Live_Demo](http://medossier.netlify.app)
+Live Demo: [FoodSave_Live_Demo](https://vertexhacks-3gh3.vercel.app/)
 
 
 
