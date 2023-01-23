@@ -1,38 +1,37 @@
-import { Button, Divider, Typography } from "@material-ui/core"
-import React from "react"
-import dummy from "../assets/dummy.jpg"
-import ReadMore from "./elements/ReadMore"
-import { useStyles } from "./styles/Home"
-import { useNavigate } from "react-router"
-import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward"
-import { useState } from "react"
-import QRCode from "react-qr-code"
-import { fetchSaleData } from "../integration"
-import { useEffect } from "react"
-import { SaleType } from "./constants/constants"
+import { Button, Divider, Typography } from "@material-ui/core";
+import React from "react";
+import dummy from "../assets/dummy.jpg";
+import ReadMore from "./elements/ReadMore";
+import { useStyles } from "./styles/Home";
+import { useNavigate } from "react-router";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import { useState } from "react";
+import QRCode from "react-qr-code";
+import { fetchSaleData } from "../integration";
+import { useEffect } from "react";
+import { SaleType } from "./constants/constants";
 
 const Home = () => {
-  const classes = useStyles()
-  const navigate = useNavigate()
-  const [isEdit, setIsEdit] = useState(true)
-  const [sale, setSale] = useState([])
+  const classes = useStyles();
+  const navigate = useNavigate();
+  const [isEdit, setIsEdit] = useState(true);
+  const [sale, setSale] = useState([]);
 
   useEffect(() => {
-    ;(async () => {
-      const sales = await fetchSaleData()
-      console.log(sales)
-      setSale(sales[sales.length - 1])
-    })()
-  }, [])
+    (async () => {
+      const sales = await fetchSaleData();
+      console.log(sales);
+      setSale(sales[sales.length - 1]);
+    })();
+  }, []);
 
   return (
     <div className={classes.mainContent}>
       <div className={classes.featuredContent}>
         <div className={classes.featured}>
           <Button
-            variant="contained"
-            className={`${classes.listButton} ${classes.exploreButton}`}
-          >
+            variant='contained'
+            className={`${classes.listButton} ${classes.exploreButton}`}>
             Limited Offer <ArrowDownwardIcon />{" "}
           </Button>
           {sale.length > 0 ? (
@@ -41,7 +40,7 @@ const Home = () => {
                 <div>
                   <div className={classes.owner}>
                     <Typography>
-                      Vendor : ABC <br /> Location: XYZ, Kadaghari <br />
+                      Vendor : Suraj Mart <br /> Location: Kadaghari <br />
                       Food: {sale.items.name} <br />
                       Quantity: {Number(sale.items.quantity._hex)} <br />
                       Discount: {Number(sale.discount._hex)} <br />
@@ -53,10 +52,9 @@ const Home = () => {
                     </Typography>
                     {isEdit ? (
                       <Button
-                        variant="contained"
+                        variant='contained'
                         className={classes.exploreButton}
-                        onClick={() => setIsEdit(false)}
-                      >
+                        onClick={() => setIsEdit(false)}>
                         Generate QR code
                       </Button>
                     ) : (
@@ -66,8 +64,7 @@ const Home = () => {
                           margin: "0 20px",
                           padding: "5px",
                           maxWidth: 84,
-                        }}
-                      >
+                        }}>
                         <QRCode
                           size={500}
                           style={{
@@ -76,7 +73,7 @@ const Home = () => {
                             width: "100%",
                           }}
                           viewBox={`0 0 500 500`}
-                          value="qr"
+                          value='qr'
                         />
                       </div>
                     )}
@@ -100,7 +97,7 @@ const Home = () => {
                 <div className={classes.currentBid}>
                   <img
                     src={dummy}
-                    alt="Mart Image"
+                    alt='Mart Image'
                     className={classes.NFTImage}
                   />
                   <div className={classes.biddings}>
@@ -111,10 +108,9 @@ const Home = () => {
               </div>
 
               <Button
-                variant="contained"
+                variant='contained'
                 className={classes.exploreButton}
-                onClick={() => navigate("/marketplace")}
-              >
+                onClick={() => navigate("/marketplace")}>
                 Explore More
               </Button>
             </>
@@ -124,7 +120,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
